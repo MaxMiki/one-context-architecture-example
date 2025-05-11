@@ -1,13 +1,13 @@
 using Microsoft.EntityFrameworkCore;
-using OneContextExample.Couriers.Application.Commands.Services;
-using OneContextExample.Couriers.Application.Queries.Services;
+using OneContextExample.Couriers.Application.Services;
+using OneContextExample.Couriers.Domain;
 using OneContextExample.Infrastructure.Couriers.Adapters;
 using OneContextExample.Infrastructure.Couriers.Services;
 using OneContextExample.Infrastructure.Data;
 using OneContextExample.Infrastructure.Orders;
 using OneContextExample.Infrastructure.Orders.Services;
-using OneContextExample.Orders.Application.Commands.Services;
-using IOrdersExtractor = OneContextExample.Orders.Application.Queries.Services.IOrdersExtractor;
+using OneContextExample.Orders.Application.Services;
+using OneContextExample.Orders.Domain;
 
 namespace OneContextExample.Api.Extensions;
 
@@ -23,12 +23,12 @@ internal static class ServiceCollectionExtensions
             options.ServiceLifetime = ServiceLifetime.Scoped;
         });
 
-        services.AddScoped<ICouriersExtractor, CouriersExtractor>();
-        services.AddScoped<ICouriersPreserver, CouriersPreserver>();
+        services.AddScoped<ICouriersSelector, CouriersSelector>();
+        services.AddScoped<ICouriersRepository, CouriersRepository>();
         services.AddScoped<IOrdersAccessor, OrdersAccessorAdapter>();
 
-        services.AddScoped<IOrdersExtractor, OrdersExtractor>();
-        services.AddScoped<IOrdersPreserver, OrdersPreserver>();
+        services.AddScoped<IOrdersSelector, OrdersSelector>();
+        services.AddScoped<IOrdersRepository, OrdersRepository>();
         
         return services;
     }

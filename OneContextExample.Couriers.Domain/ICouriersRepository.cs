@@ -1,8 +1,6 @@
-using OneContextExample.Couriers.Domain;
+namespace OneContextExample.Couriers.Domain;
 
-namespace OneContextExample.Couriers.Application.Commands.Services;
-
-public interface ICouriersPreserver
+public interface ICouriersRepository
 {
     Task<Courier?> Get(Guid id, CancellationToken cancellationToken = default);
     

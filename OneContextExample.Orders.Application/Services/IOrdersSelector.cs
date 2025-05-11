@@ -1,8 +1,8 @@
 using OneContextExample.Orders.Domain;
 
-namespace OneContextExample.Orders.Application.Queries.Services;
+namespace OneContextExample.Orders.Application.Services;
 
-public interface IOrdersExtractor
+public interface IOrdersSelector
 {
     Task<Order?> GetOrder(Guid id, CancellationToken cancellationToken = default);
 }
